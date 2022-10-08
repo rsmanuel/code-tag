@@ -7,7 +7,13 @@ public class Rodrigo {
     private String path = "ProjectFolder/src/org/academiadecodigo/bootcamp/project/pics/characters/rodrigo.png";
     private Picture pic;
 
-    public void move(){}
+    public void move() throws InterruptedException {
+
+        while(true) {
+            pic.translate(10, 0);
+            Thread.sleep(1000);
+        }
+    }
 
     public Rodrigo() {
         this.pic = new Picture(69, 104);
