@@ -4,7 +4,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Rodrigo {
 
-    private String path = "ProjectFolder/src/org/academiadecodigo/bootcamp/project/pics/characters/rodrigo.png";
+    private String path = "./pics/characters/rodrigoLeft.png";
     private Picture pic;
 
     public void move() throws InterruptedException {
@@ -16,7 +16,7 @@ public class Rodrigo {
     }
 
     public Rodrigo() {
-        this.pic = new Picture(69, 104);
+        this.pic = new Picture();
         pic.load(path);
         pic.draw();
         System.out.println(pic.getWidth() + " " + pic.getHeight());
