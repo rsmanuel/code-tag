@@ -1,28 +1,18 @@
-package org.academiadecodigo.bootcamp.project.rodrigo;
+package org.academiadecodigo.bootcamp.project.characters;
 
+import org.academiadecodigo.bootcamp.project.directions.MoveDirections;
+import org.academiadecodigo.bootcamp.project.map.Map;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Rodrigo implements KeyboardHandler {
-
-    private String pathLeft = "./pics/characters/rodrigoLeft.png";
-
-    private String pathRigth = "./pics/characters/rodrigoRight.png";
-    private Picture pic;
-
+public class Rodrigo extends Characters implements KeyboardHandler {
     private Keyboard keyboard;
 
-    public void move(){
-        pic.translate(10, 0);
-    }
-
-    public Rodrigo() {
-        this.pic = new Picture();
-        pic.load(pathLeft);
-        pic.draw();
+    public Rodrigo(Map level) {
+        super("./pics/characters/rodrigoLeft.png", "./pics/characters/rodrigoRight.png", new Picture(0, 0, "./pics/characters/rodrigoRight.png"), 10, level);
         this.keyboard = new Keyboard(this);
         initKeyboard();
     }
@@ -54,15 +44,13 @@ public class Rodrigo implements KeyboardHandler {
     private void move(KeyboardEvent keyboardEvent) {
         System.out.println(keyboardEvent.getKey());
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT){
-            pic.load(pathRigth);
-            pic.translate(10, 0);
+            super.move(MoveDirections.RIGHT);
         } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {
-            pic.load(pathLeft);
-            pic.translate(-10, 0);
+            super.move(MoveDirections.LEFT);
         } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP) {
-            pic.translate(0, -10);
+            super.move(MoveDirections.UP);
         } else {
-            pic.translate(0, 10);
+            super.move(MoveDirections.DOWN);
         }
     }
 
