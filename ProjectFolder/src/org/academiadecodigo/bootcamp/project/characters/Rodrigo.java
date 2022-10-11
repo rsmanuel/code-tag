@@ -42,7 +42,6 @@ public class Rodrigo extends Characters implements KeyboardHandler {
     }
 
     private void move(KeyboardEvent keyboardEvent) {
-        System.out.println(keyboardEvent.getKey());
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT){
             super.move(MoveDirections.RIGHT);
         } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {

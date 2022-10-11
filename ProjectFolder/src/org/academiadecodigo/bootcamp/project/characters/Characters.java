@@ -10,6 +10,8 @@ abstract public class Characters {
     private String pathRigth;
     private Picture pic;
     private int speed;
+
+    private int speedLeft;
     private Map level;
 
     public Characters(String pathLeft, String pathRigth, Picture pic, int speed, Map level){
@@ -17,7 +19,7 @@ abstract public class Characters {
         this.pathRigth = pathRigth;
         this.pic = pic;
         this.level = level;
-        this.speed = 10;
+        this.speed = speed;
         pic.draw();
     }
 
@@ -27,13 +29,13 @@ abstract public class Characters {
 
         switch (directions){
             case UP:
-                return (y - speed) < (135 - speed);
+                return y - speed <= 135;
             case DOWN:
-                return (y + speed) > (level.getBackground().getHeight() - (pic.getHeight() - 1) - 14);
+                return y + pic.getHeight() > level.getBackground().getHeight() - 20;
             case LEFT:
-                return (x - speed) < (14 - speed);
+                return x < 20;
             case RIGHT:
-                return (x + speed) > (level.getBackground().getWidth() - 14);
+                return x > (level.getBackground().getWidth() - 14);
         }
         return false;
     }
@@ -41,26 +43,35 @@ abstract public class Characters {
     public void move(MoveDirections directions) {
         switch (directions){
             case UP:
-                if (!isHittingWall(MoveDirections.UP)){
-                    pic.translate(0, -speed);
+                if (pic.getY() - speed < 135) {
+                    pic.translate(0, -(pic.getY() - 134));
+                    return;
                 }
+                pic.translate(0, -speed);
                 return;
             case DOWN:
-                if (!isHittingWall(MoveDirections.DOWN)){
-                    pic.translate(0, speed);
+                if ((pic.getY() + pic.getHeight() + speed) > level.getBackground().getHeight() - 14){
+                    pic.translate(0, (level.getBackground().getHeight() - 14) - (pic.getY() + pic.getHeight()));
+                    return;
                 }
+                pic.translate(0, speed);
                 return;
             case LEFT:
-                if (!isHittingWall(MoveDirections.LEFT)) {
-                    pic.load(pathLeft);
-                    pic.translate(-(speed), 0);
+                pic.load(pathLeft);
+                if (pic.getX() - speed < 14) {
+                    System.out.println(pic.getX());
+                    pic.translate(-(pic.getX() - 13), 0);
+                    return;
                 }
+                pic.translate(-(speed), 0);
                 return;
             case RIGHT:
-                if (!isHittingWall(MoveDirections.RIGHT)) {
-                    pic.load(pathRigth);
-                    pic.translate(speed, 0);
+                pic.load(pathRigth);
+                if((pic.getX() + pic.getWidth() + speed) > level.getBackground().getWidth() - 14) {
+                    pic.translate((level.getBackground().getWidth() - 14) - (pic.getX() + pic.getWidth()), 0);
+                    return;
                 }
+                pic.translate(speed, 0);
         }
     }
 }
