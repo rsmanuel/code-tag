@@ -23,23 +23,6 @@ abstract public class Characters {
         pic.draw();
     }
 
-    public boolean isHittingWall(MoveDirections directions){
-        int x = pic.getX();
-        int y = pic.getY();
-
-        switch (directions){
-            case UP:
-                return y - speed <= 135;
-            case DOWN:
-                return y + pic.getHeight() > level.getBackground().getHeight() - 20;
-            case LEFT:
-                return x < 20;
-            case RIGHT:
-                return x > (level.getBackground().getWidth() - 14);
-        }
-        return false;
-    }
-
     public void move(MoveDirections directions) {
         switch (directions){
             case UP:
@@ -47,11 +30,35 @@ abstract public class Characters {
                     pic.translate(0, -(pic.getY() - 134));
                     return;
                 }
+                if (pic.getY() - speed < 623 && pic.getY() > 226 && pic.getX() >= 567 && pic.getX() <= 658) {
+                    pic.translate(0, -(pic.getY() - 622));
+                    return;
+                }
+                if (pic.getY() - speed < 623 && pic.getY() > 226 && pic.getX() >= 732 && pic.getX() <= 823) {
+                    pic.translate(0, -(pic.getY() - 622));
+                    return;
+                }
+                if (pic.getY() - speed < 623 && pic.getY() > 226 && pic.getX() >= 901 && pic.getX() <= 992) {
+                    pic.translate(0, -(pic.getY() - 622));
+                    return;
+                }
+                if (pic.getY() - speed < 623 && pic.getY() > 226 && pic.getX() >= 1066 && pic.getX() <= 1157) {
+                    pic.translate(0, -(pic.getY() - 622));
+                    return;
+                }
+                if (pic.getY() - speed < 623 && pic.getY() > 226 && pic.getX() >= 1231 && pic.getX() <= 1322) {
+                    pic.translate(0, -(pic.getY() - 622));
+                    return;
+                }
                 pic.translate(0, -speed);
                 return;
             case DOWN:
                 if ((pic.getY() + pic.getHeight() + speed) > level.getBackground().getHeight() - 14){
                     pic.translate(0, (level.getBackground().getHeight() - 14) - (pic.getY() + pic.getHeight()));
+                    return;
+                }
+                if ((pic.getY() + pic.getHeight() + speed) > 226 && (pic.getX() + pic.getHeight() >= 567) && (pic.getX() + pic.getHeight() <= 658)) {
+                    pic.translate(0, (pic.getY() + pic.getHeight()) - 226);
                     return;
                 }
                 pic.translate(0, speed);
