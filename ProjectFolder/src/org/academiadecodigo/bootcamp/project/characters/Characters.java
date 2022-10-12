@@ -1,7 +1,6 @@
 package org.academiadecodigo.bootcamp.project.characters;
 
-import com.sun.xml.internal.ws.message.stream.StreamAttachment;
-import javafx.scene.control.Tab;
+
 import org.academiadecodigo.bootcamp.project.directions.MoveDirections;
 import org.academiadecodigo.bootcamp.project.map.Base;
 import org.academiadecodigo.bootcamp.project.map.Map;
