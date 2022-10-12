@@ -55,7 +55,7 @@ abstract public class Characters {
                     && (pic.getX() - speed) < rx){
                 return true;
             }*/
-            if((pic.getY() - speed) < by && pic.getY() - speed > ty && pic.getMaxX() > lx && pic.getX() < rx && direction == MoveDirections.UP){
+            if((pic.getY() - speed) < by && pic.getY() - speed > ty && pic.getX() > lx && pic.getMaxX() < rx && direction == MoveDirections.UP){
                 pic.translate(0, -(pic.getY() - by));
                 return true;
             }
