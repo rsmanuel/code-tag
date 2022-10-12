@@ -12,7 +12,7 @@ public class Rodrigo extends Characters implements KeyboardHandler {
     private Keyboard keyboard;
 
     public Rodrigo(Map level) {
-        super("./pics/characters/rodrigoLeft.png", "./pics/characters/rodrigoRight.png", new Picture(0, 0, "./pics/characters/rodrigoRight.png"), 10, level);
+        super("./pics/characters/rodrigoLeft.png", "./pics/characters/rodrigoRight.png", new Picture(500, 500, "./pics/characters/rodrigoRight.png"), 10, level);
         this.keyboard = new Keyboard(this);
         initKeyboard();
     }
