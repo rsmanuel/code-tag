@@ -8,11 +8,11 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Rodrigo extends Characters implements KeyboardHandler {
+public class Mariana extends Characters implements KeyboardHandler {
     private Keyboard keyboard;
 
-    public Rodrigo(Map level) {
-        super("./pics/characters/rodrigoLeft.png", "./pics/characters/rodrigoRight.png", new Picture(500, 500, "./pics/characters/rodrigoRight.png"), 10, level);
+    public Mariana(Map level) {
+        super("./pics/characters/diogoLeft.png", "./pics/characters/diogoRight.png", new Picture(250, 500, "./pics/characters/diogoRight.png"), 10, level);
         this.keyboard = new Keyboard(this);
         initKeyboard();
     }

@@ -8,11 +8,12 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Rodrigo extends Characters implements KeyboardHandler {
+public class Gabi extends Characters implements KeyboardHandler {
+
     private Keyboard keyboard;
 
-    public Rodrigo(Map level) {
-        super("./pics/characters/rodrigoLeft.png", "./pics/characters/rodrigoRight.png", new Picture(500, 500, "./pics/characters/rodrigoRight.png"), 10, level);
+    public Gabi (Map level) {
+        super("./pics/characters/gabiLeft.png", "./pics/characters/gabiRight.png", new Picture(500, 500, "./pics/characters/gabiRight.png"), 10, level);
         this.keyboard = new Keyboard(this);
         initKeyboard();
     }
@@ -57,4 +58,5 @@ public class Rodrigo extends Characters implements KeyboardHandler {
     public void keyReleased(KeyboardEvent keyboardEvent) {
         move(keyboardEvent);
     }
+
 }
