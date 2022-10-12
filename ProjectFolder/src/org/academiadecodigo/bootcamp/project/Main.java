@@ -1,4 +1,5 @@
 package org.academiadecodigo.bootcamp.project;
+import org.academiadecodigo.bootcamp.project.characters.Bri;
 import org.academiadecodigo.bootcamp.project.characters.Diogo;
 import org.academiadecodigo.bootcamp.project.characters.Rodrigo;
 import org.academiadecodigo.bootcamp.project.characters.Zuca;
@@ -10,8 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         Map map = new Base();
-        Rodrigo rodrigo = new Rodrigo(map);
-        Diogo diogo = new Diogo(map);
+        Bri bri = new Bri(map);
 
     }
 }
