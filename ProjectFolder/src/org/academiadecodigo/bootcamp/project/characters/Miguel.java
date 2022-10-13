@@ -1,14 +1,13 @@
 package org.academiadecodigo.bootcamp.project.characters;
 
-import org.academiadecodigo.bootcamp.project.directions.MoveDirections;
 import org.academiadecodigo.bootcamp.project.game.Randomizer;
 import org.academiadecodigo.bootcamp.project.map.Map;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Zuca extends AcademiaDeCodigo {
-    public Zuca(Map level) throws InterruptedException {
-        super("./pics/characters/zucaLeft.png", "./pics/characters/zucaRight.png",
+public class Miguel extends AcademiaDeCodigo{
+    public Miguel(Map level) throws InterruptedException {
+        super("./pics/characters/miguelLeft.png", "./pics/characters/miguelRight.png",
                 new Picture(Randomizer.getRandomRange(14, 1426), Randomizer.getRandomRange(135, level.getBackground().getHeight() - 14),
-                        "./pics/characters/zucaRight.png"), 20, level, true);
+                        "./pics/characters/miguelRight.png"), 20, level, true);
     }
 }

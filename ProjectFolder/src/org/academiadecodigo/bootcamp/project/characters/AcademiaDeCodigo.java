@@ -1,9 +1,7 @@
 package org.academiadecodigo.bootcamp.project.characters;
 
+import org.academiadecodigo.bootcamp.project.game.Randomizer;
 import org.academiadecodigo.bootcamp.project.map.Map;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class AcademiaDeCodigo extends Characters {
@@ -12,19 +10,62 @@ public class AcademiaDeCodigo extends Characters {
         super(pathLeft, pathRight, pic, speed, level, isAc);
     }
 
-    public void move() throws InterruptedException {
+    public void move() {
 
         Thread tr = new Thread(() -> {
-
-        while (true) {
-
-
+            while (true){
+                int random = Randomizer.getRandomRange(1, 40);
+                if(random > 0 && random < 11){
+                    while(Randomizer.getRandomRange(1, 10) < 8){
+                        moveUp();
+                        try {
+                            Thread.sleep(50);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                    continue;
+                }
+                if(random > 10 && random < 21){
+                    while(Randomizer.getRandomRange(1, 10) < 8){
+                        moveDown();
+                        try {
+                            Thread.sleep(50);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                    continue;
+                }
+                if(random > 20 && random < 31){
+                    while(Randomizer.getRandomRange(1, 10) < 8){
+                        moveLeft();
+                        try {
+                            Thread.sleep(50);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                    continue;
+                }
+                if(random > 30 && random < 41){
+                    while(Randomizer.getRandomRange(1, 10) < 8){
+                        moveRight();
+                        try {
+                            Thread.sleep(50);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+            }
+        });
+        tr.start();
+        /*while (true) {
                 int changeDirection = (int) Math.ceil(Math.random() * 100);
-                int moveRandom;
-
 
                 if (changeDirection > 80) {
-                    while ((moveRandom = (int) Math.ceil(Math.random() * 4)) == 1) {
+                    while ((int) Math.ceil(Math.random() * 4) == 1) {
                         super.moveUp();
                         try {
                             Thread.sleep(50);
@@ -44,7 +85,7 @@ public class AcademiaDeCodigo extends Characters {
                             throw new RuntimeException(e);
                         }
                     }
-                    while ((moveRandom = (int) Math.ceil(Math.random() * 4)) == 2) {
+                    while (((int) Math.ceil(Math.random() * 4)) == 2) {
                         super.moveDown();
                         try {
                             Thread.sleep(50);
@@ -64,7 +105,7 @@ public class AcademiaDeCodigo extends Characters {
                             throw new RuntimeException(e);
                         }
                     }
-                    while ((moveRandom = (int) Math.ceil(Math.random() * 4)) == 3) {
+                    while (((int) Math.ceil(Math.random() * 4)) == 3) {
                         super.moveLeft();
                         try {
                             Thread.sleep(50);
@@ -90,7 +131,7 @@ public class AcademiaDeCodigo extends Characters {
                             throw new RuntimeException(e);
                         }
                     }
-                    while ((moveRandom = (int) Math.ceil(Math.random() * 4)) == 4) {
+                    while (((int) Math.ceil(Math.random() * 4)) == 4) {
                         super.moveRight();
                         try {
                             Thread.sleep(50);
@@ -118,6 +159,6 @@ public class AcademiaDeCodigo extends Characters {
                     }
                 }}
         });
-        tr.start();
+        tr.start();*/
     }
 }
