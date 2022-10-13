@@ -10,7 +10,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
-abstract public class Characters implements KeyboardHandler {
+abstract public class Characters {
     private Keyboard keyboard;
     private String pathLeft;
     private String pathRight;
@@ -30,49 +30,15 @@ abstract public class Characters implements KeyboardHandler {
         this.speed = speed;
         this.tables = new Tables();
         this.isAc = isAc;
-        this.keyboard = new Keyboard(this);
-        initKeyboard();
         pic.draw();
     }
 
-    private void initKeyboard(){
-        KeyboardEvent right = new KeyboardEvent();
-        right.setKey(isAc ? KeyboardEvent.KEY_RIGHT : KeyboardEvent.KEY_D);
-        right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        KeyboardEvent left = new KeyboardEvent();
-        left.setKey(isAc ? KeyboardEvent.KEY_LEFT : KeyboardEvent.KEY_A);
-        left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        KeyboardEvent down = new KeyboardEvent();
-        down.setKey(isAc ? KeyboardEvent.KEY_DOWN : KeyboardEvent.KEY_S);
-        down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        KeyboardEvent up = new KeyboardEvent();
-        up.setKey(isAc ? KeyboardEvent.KEY_UP : KeyboardEvent.KEY_W);
-        up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(right);
-        keyboard.addEventListener(left);
-        keyboard.addEventListener(down);
-        keyboard.addEventListener(up);
+    public Picture getPic() {
+        return pic;
     }
 
-    public void keyPressed(KeyboardEvent keyboardEvent) {
-        move(keyboardEvent);
-    }
-
-    private void move(KeyboardEvent keyboardEvent) {
-        if (keyboardEvent.getKey() == (isAc ? KeyboardEvent.KEY_RIGHT : KeyboardEvent.KEY_D)){
-            move(MoveDirections.RIGHT);
-        } else if (keyboardEvent.getKey() == (isAc ? KeyboardEvent.KEY_LEFT : KeyboardEvent.KEY_A)) {
-            move(MoveDirections.LEFT);
-        } else if (keyboardEvent.getKey() == (isAc ? KeyboardEvent.KEY_UP : KeyboardEvent.KEY_W)) {
-            move(MoveDirections.UP);
-        } else {
-            move(MoveDirections.DOWN);
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-        move(keyboardEvent);
+    public int getSpeed() {
+        return speed;
     }
 
     public boolean isHittingWall(MoveDirections directions){
@@ -154,19 +120,4 @@ abstract public class Characters implements KeyboardHandler {
         pic.translate(isHittingWall(MoveDirections.RIGHT) ? (pic.getMaxX() < rightWall ? (rightWall - pic.getMaxX()) : 0) : speed, 0);
     }
 
-    public void move(MoveDirections directions) {
-        switch (directions){
-            case UP:
-                moveUp();
-                return;
-            case DOWN:
-                moveDown();
-                return;
-            case LEFT:
-                moveLeft();
-                return;
-            case RIGHT:
-                moveRight();
-        }
-    }
 }
