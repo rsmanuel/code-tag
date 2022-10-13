@@ -4,14 +4,10 @@ import org.academiadecodigo.bootcamp.project.directions.MoveDirections;
 import org.academiadecodigo.bootcamp.project.map.Map;
 import org.academiadecodigo.bootcamp.project.map.Tables;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
 abstract public class Characters {
-    private Keyboard keyboard;
     private String pathLeft;
     private String pathRight;
     private Picture pic;
@@ -28,7 +24,7 @@ abstract public class Characters {
         this.pic = pic;
         this.level = level;
         this.speed = speed;
-        this.tables = new Tables();
+        //this.tables = new Tables();
         this.isAc = isAc;
         pic.draw();
     }
@@ -52,7 +48,7 @@ abstract public class Characters {
                 || ((pic.getX() - speed) < leftWall && directions == MoveDirections.LEFT)
                 || ((pic.getMaxX() + speed) > rightWall && directions == MoveDirections.RIGHT);
     }
-    public boolean isHittingTables(MoveDirections direction){
+    /*public boolean isHittingTables(MoveDirections direction){
         for(String table : this.tables){
             Integer[] pos = tables.get(table);
             int lx = pos[0];
@@ -80,31 +76,31 @@ abstract public class Characters {
             }
         }
         return false;
-    }
+    }*/
 
     public void moveUp(){
         int upWall = 135;
-        if(isHittingTables(MoveDirections.UP)){
+        /*if(isHittingTables(MoveDirections.UP)){
             return;
-        }
+        }*/
 
         pic.translate(0, isHittingWall(MoveDirections.UP) ? (pic.getY() > upWall ? -(pic.getY() - upWall) : 0) : -(speed));
     }
 
     public void moveDown(){
         int downWall = level.getBackground().getHeight() - 14;
-        if(isHittingTables(MoveDirections.DOWN)){
+        /*if(isHittingTables(MoveDirections.DOWN)){
             return;
-        }
+        }*/
 
         pic.translate(0, isHittingWall(MoveDirections.DOWN) ? (pic.getMaxY() < downWall ? (downWall - pic.getMaxY()) : 0) : speed);
     }
 
     public void moveLeft(){
         int leftWall = 14;
-        if(isHittingTables(MoveDirections.LEFT)){
+        /*if(isHittingTables(MoveDirections.LEFT)){
             return;
-        }
+        }*/
 
         pic.load(pathLeft);
         pic.translate(isHittingWall(MoveDirections.LEFT) ? (pic.getX() > leftWall ? -(pic.getX() - leftWall) : 0) : -(speed), 0);
@@ -112,9 +108,9 @@ abstract public class Characters {
 
     public void moveRight(){
         int rightWall = level.getBackground().getWidth() - 14;
-        if(isHittingTables(MoveDirections.RIGHT)){
+        /*if(isHittingTables(MoveDirections.RIGHT)){
             return;
-        }
+        }*/
 
         pic.load(pathRight);
         pic.translate(isHittingWall(MoveDirections.RIGHT) ? (pic.getMaxX() < rightWall ? (rightWall - pic.getMaxX()) : 0) : speed, 0);

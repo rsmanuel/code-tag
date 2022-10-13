@@ -8,16 +8,15 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Map map = new Base();
         Mike42 mike = new Mike42(map);
-        Teresa42 teresa42 = new Teresa42(map);
-        AcademiaDeCodigo[] academiaDeCodigo= new AcademiaDeCodigo[4];
+        AcademiaDeCodigo[] academiaDeCodigo= new AcademiaDeCodigo[6];
         academiaDeCodigo[0] = new Gabi(map);
         academiaDeCodigo[1] = new Bri(map);
-        academiaDeCodigo[2] = new PedroG(map);
+        academiaDeCodigo[2] = new Gee(map);
         academiaDeCodigo[3] = new Fanuca(map);
+        academiaDeCodigo[4] = new Cat(map);
 
-        for (AcademiaDeCodigo str: academiaDeCodigo) {
-            System.out.println(str);
-            str.move();
+        for (AcademiaDeCodigo character: academiaDeCodigo) {
+            character.move();
         }
     }
 }

@@ -8,7 +8,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class QuarentaEDois extends Characters implements KeyboardHandler {
+abstract public class QuarentaEDois extends Characters implements KeyboardHandler {
 
     private Keyboard keyboard;
     public QuarentaEDois(String pathLeft, String pathRight, Picture pic, int speed, Map level, boolean isAc) {

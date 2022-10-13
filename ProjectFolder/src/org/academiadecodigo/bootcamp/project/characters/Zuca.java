@@ -9,13 +9,4 @@ public class Zuca extends AcademiaDeCodigo {
         super("./pics/characters/zucaLeft.png", "./pics/characters/zucaRight.png",
                 new Picture(299, 500, "./pics/characters/zucaRight.png"), 4, level, true);
     }
-
-    public void moveUp(){
-        int upWall = 135;
-        if(isHittingTables(MoveDirections.UP)){
-            return;
-        }
-
-        super.getPic().translate(0, isHittingWall(MoveDirections.UP) ? (super.getPic().getY() > upWall ? -(super.getPic().getY() - upWall) : 0) : -(super.getSpeed()));
-    }
 }
