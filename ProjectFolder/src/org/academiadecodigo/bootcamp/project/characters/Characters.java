@@ -1,30 +1,78 @@
 package org.academiadecodigo.bootcamp.project.characters;
 
 import org.academiadecodigo.bootcamp.project.directions.MoveDirections;
-import org.academiadecodigo.bootcamp.project.map.Base;
 import org.academiadecodigo.bootcamp.project.map.Map;
 import org.academiadecodigo.bootcamp.project.map.Tables;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
-abstract public class Characters {
+abstract public class Characters implements KeyboardHandler {
+    private Keyboard keyboard;
     private String pathLeft;
     private String pathRight;
     private Picture pic;
     private int speed;
     private Map level;
 
+    private boolean isAc;
+
     private Tables tables;
 
-    public Characters(String pathLeft, String pathRight, Picture pic, int speed, Map level){
+    public Characters(String pathLeft, String pathRight, Picture pic, int speed, Map level, boolean isAc){
         this.pathLeft = pathLeft;
         this.pathRight = pathRight;
         this.pic = pic;
         this.level = level;
         this.speed = speed;
         this.tables = new Tables();
+        this.isAc = isAc;
+        this.keyboard = new Keyboard(this);
+        initKeyboard();
         pic.draw();
+    }
+
+    private void initKeyboard(){
+        KeyboardEvent right = new KeyboardEvent();
+        right.setKey(isAc ? KeyboardEvent.KEY_RIGHT : KeyboardEvent.KEY_D);
+        right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent left = new KeyboardEvent();
+        left.setKey(isAc ? KeyboardEvent.KEY_LEFT : KeyboardEvent.KEY_A);
+        left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent down = new KeyboardEvent();
+        down.setKey(isAc ? KeyboardEvent.KEY_DOWN : KeyboardEvent.KEY_S);
+        down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent up = new KeyboardEvent();
+        up.setKey(isAc ? KeyboardEvent.KEY_UP : KeyboardEvent.KEY_W);
+        up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(right);
+        keyboard.addEventListener(left);
+        keyboard.addEventListener(down);
+        keyboard.addEventListener(up);
+    }
+
+    public void keyPressed(KeyboardEvent keyboardEvent) {
+        move(keyboardEvent);
+    }
+
+    private void move(KeyboardEvent keyboardEvent) {
+        if (keyboardEvent.getKey() == (isAc ? KeyboardEvent.KEY_RIGHT : KeyboardEvent.KEY_D)){
+            move(MoveDirections.RIGHT);
+        } else if (keyboardEvent.getKey() == (isAc ? KeyboardEvent.KEY_LEFT : KeyboardEvent.KEY_A)) {
+            move(MoveDirections.LEFT);
+        } else if (keyboardEvent.getKey() == (isAc ? KeyboardEvent.KEY_UP : KeyboardEvent.KEY_W)) {
+            move(MoveDirections.UP);
+        } else {
+            move(MoveDirections.DOWN);
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+        move(keyboardEvent);
     }
 
     public boolean isHittingWall(MoveDirections directions){
@@ -46,10 +94,6 @@ abstract public class Characters {
             int ty = pos[2];
             int by = pos[3];
 
-            /*if((pic.getY() - speed) < by && (pic.getMaxY() - speed) > ty && (pic.getMaxX() + speed) > lx
-                    && (pic.getX() - speed) < rx){
-                return true;
-            }*/
             if((pic.getY() - speed) < by && pic.getY() - speed > ty && pic.getX() > lx && pic.getMaxX() < rx && direction == MoveDirections.UP){
                 pic.translate(0, -(pic.getY() - by));
                 return true;
@@ -74,7 +118,6 @@ abstract public class Characters {
 
     public void moveUp(){
         int upWall = 135;
-
         if(isHittingTables(MoveDirections.UP)){
             return;
         }
@@ -115,16 +158,15 @@ abstract public class Characters {
         switch (directions){
             case UP:
                 moveUp();
-                break;
+                return;
             case DOWN:
                 moveDown();
-                break;
+                return;
             case LEFT:
                 moveLeft();
-                break;
+                return;
             case RIGHT:
                 moveRight();
-                break;
         }
     }
 }
