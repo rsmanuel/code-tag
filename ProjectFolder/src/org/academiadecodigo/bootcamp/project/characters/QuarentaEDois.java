@@ -12,8 +12,8 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 abstract public class QuarentaEDois extends Characters implements KeyboardHandler {
 
     private Keyboard keyboard;
-    public QuarentaEDois(String pathLeft, String pathRight, Picture pic, int speed, Map level) {
-        super(pathLeft, pathRight, pic, speed, level);
+    public QuarentaEDois(String pathLeft, String pathRight, int speed, Map level) {
+        super(pathLeft, pathRight, new Picture(500, 500, pathRight), speed, level);
         this.keyboard = new Keyboard(this);
         initKeyboard();
     }

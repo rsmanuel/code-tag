@@ -7,8 +7,8 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class AcademiaDeCodigo extends Characters {
 
-    public AcademiaDeCodigo(String pathLeft, String pathRight, Picture pic, int speed, Map level) throws InterruptedException {
-        super(pathLeft, pathRight, pic, speed, level);
+    public AcademiaDeCodigo(String pathLeft, String pathRight, int speed, Map level) throws InterruptedException {
+        super(pathLeft, pathRight, new Picture(Randomizer.getRandomRange(14, 1426), Randomizer.getRandomRange(135, level.getBackground().getHeight() - 14), pathRight), speed, level);
     }
 
     public void move() {

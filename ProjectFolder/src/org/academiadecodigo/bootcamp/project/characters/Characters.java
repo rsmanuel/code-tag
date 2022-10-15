@@ -2,8 +2,6 @@ package org.academiadecodigo.bootcamp.project.characters;
 
 import org.academiadecodigo.bootcamp.project.directions.MoveDirections;
 import org.academiadecodigo.bootcamp.project.map.Map;
-import org.academiadecodigo.bootcamp.project.map.Tables;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
