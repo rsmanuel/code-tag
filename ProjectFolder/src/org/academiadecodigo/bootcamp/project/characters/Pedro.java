@@ -8,6 +8,6 @@ public class Pedro extends AcademiaDeCodigo {
     public Pedro (Map level) throws InterruptedException {
         super("./pics/characters/pedroLeft.png", "./pics/characters/pedroRight.png",
                 new Picture(Randomizer.getRandomRange(14, 1426), Randomizer.getRandomRange(135, level.getBackground().getHeight() - 14),
-                        "./pics/characters/pedroRight.png"), 20, level, true);
+                        "./pics/characters/pedroRight.png"), 20, level);
     }
 }

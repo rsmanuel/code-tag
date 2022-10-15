@@ -14,18 +14,15 @@ abstract public class Characters {
     private int speed;
     private Map level;
 
-    private boolean isAc;
+    //private Tables tables;
 
-    private Tables tables;
-
-    public Characters(String pathLeft, String pathRight, Picture pic, int speed, Map level, boolean isAc){
+    public Characters(String pathLeft, String pathRight, Picture pic, int speed, Map level){
         this.pathLeft = pathLeft;
         this.pathRight = pathRight;
         this.pic = pic;
         this.level = level;
         this.speed = speed;
         //this.tables = new Tables();
-        this.isAc = isAc;
         pic.draw();
     }
 

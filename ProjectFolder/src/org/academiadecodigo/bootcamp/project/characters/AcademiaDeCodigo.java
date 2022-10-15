@@ -1,19 +1,20 @@
 package org.academiadecodigo.bootcamp.project.characters;
 
+import org.academiadecodigo.bootcamp.project.game.Game;
 import org.academiadecodigo.bootcamp.project.game.Randomizer;
 import org.academiadecodigo.bootcamp.project.map.Map;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class AcademiaDeCodigo extends Characters {
 
-    public AcademiaDeCodigo(String pathLeft, String pathRight, Picture pic, int speed, Map level, boolean isAc) throws InterruptedException {
-        super(pathLeft, pathRight, pic, speed, level, isAc);
+    public AcademiaDeCodigo(String pathLeft, String pathRight, Picture pic, int speed, Map level) throws InterruptedException {
+        super(pathLeft, pathRight, pic, speed, level);
     }
 
     public void move() {
 
         Thread tr = new Thread(() -> {
-            while (true){
+            while (Game.isRunning){
                 int random = Randomizer.getRandomRange(1, 40);
                 if(random > 0 && random < 11){
                     while(Randomizer.getRandomRange(1, 10) < 8){

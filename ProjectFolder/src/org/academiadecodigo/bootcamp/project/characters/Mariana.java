@@ -8,6 +8,6 @@ public class Mariana extends AcademiaDeCodigo {
     public Mariana(Map level) throws InterruptedException {
         super("./pics/characters/marianaLeft.png", "./pics/characters/marianaRight.png",
                 new Picture(Randomizer.getRandomRange(14, 1426), Randomizer.getRandomRange(135, level.getBackground().getHeight() - 14),
-                        "./pics/characters/marianaRight.png"), 20, level, true);
+                        "./pics/characters/marianaRight.png"), 20, level);
     }
 }

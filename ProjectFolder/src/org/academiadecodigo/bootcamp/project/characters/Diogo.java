@@ -8,6 +8,6 @@ public class Diogo extends AcademiaDeCodigo{
     public Diogo(Map level) throws InterruptedException {
         super("./pics/characters/diogoLeft.png", "./pics/characters/diogoRight.png",
                 new Picture(Randomizer.getRandomRange(14, 1426), Randomizer.getRandomRange(135, level.getBackground().getHeight() - 14),
-                        "./pics/characters/diogoRight.png"), 20, level, true);
+                        "./pics/characters/diogoRight.png"), 20, level);
     }
 }

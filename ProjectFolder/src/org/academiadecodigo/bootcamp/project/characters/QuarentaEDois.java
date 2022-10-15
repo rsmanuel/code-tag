@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.project.characters;
 
 import org.academiadecodigo.bootcamp.project.directions.MoveDirections;
+import org.academiadecodigo.bootcamp.project.game.Game;
 import org.academiadecodigo.bootcamp.project.map.Map;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -11,8 +12,8 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 abstract public class QuarentaEDois extends Characters implements KeyboardHandler {
 
     private Keyboard keyboard;
-    public QuarentaEDois(String pathLeft, String pathRight, Picture pic, int speed, Map level, boolean isAc) {
-        super(pathLeft, pathRight, pic, speed, level, isAc);
+    public QuarentaEDois(String pathLeft, String pathRight, Picture pic, int speed, Map level) {
+        super(pathLeft, pathRight, pic, speed, level);
         this.keyboard = new Keyboard(this);
         initKeyboard();
     }
@@ -41,13 +42,13 @@ abstract public class QuarentaEDois extends Characters implements KeyboardHandle
     }
 
     private void move(KeyboardEvent keyboardEvent) {
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT){
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT && Game.isRunning){
             move(MoveDirections.RIGHT);
-        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {
+        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT && Game.isRunning) {
             move(MoveDirections.LEFT);
-        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP) {
+        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP && Game.isRunning) {
             move(MoveDirections.UP);
-        } else {
+        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN && Game.isRunning) {
             move(MoveDirections.DOWN);
         }
     }
