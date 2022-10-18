@@ -23,7 +23,7 @@ public class Score {
         text2.draw();
         text2.setColor(new Color(232, 51, 106));
         try {
-            FileReader in = new FileReader("src/resources/high_score.txt");
+            FileReader in = new FileReader("src/pics/high_score.txt");
             br = new BufferedReader(in);
             read();
         } catch (IOException e) {
@@ -54,7 +54,7 @@ public class Score {
             return;
         }
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("src/resources/high_score.txt"));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("src/pics/high_score.txt"));
             bw.write(String.valueOf(score));
             br.close();
             bw.close();

@@ -8,6 +8,10 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
+
 public class Game implements KeyboardHandler {
     public static boolean isRunning = false;
 
@@ -76,12 +80,17 @@ public class Game implements KeyboardHandler {
                 score.save();
                 Picture gameOver = new Picture(0, 0, "pics/sets/gameover.png");
                 gameOver.draw();
+                Game.sound.stopMusic();
             }
         }
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static Music sound;
+
+    public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
         Game game = new Game();
+        sound = new Music();
+        sound.startMusic("/pics/ES_Back to Business - William Benckert.wav");
         while(!Game.isRunning){
             game.gameMenu();
         }
